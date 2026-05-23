@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# Color reference files (design assets, not part of the site)
+colors/
+
+# Exclude all image files except hero photos
+*.jpeg
+*.jpg
+*.png
+*.avif
+*.JPG
+*.PNG
+*.AVIF
+
+# Allow hero images
+!images/**/hero.jpeg
+!images/**/hero.jpg
+!images/**/hero.png
