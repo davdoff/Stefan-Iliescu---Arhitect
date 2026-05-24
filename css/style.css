@@ -367,15 +367,15 @@ button { font: inherit; cursor: pointer; background: none; border: none; }
 .layout-5 .pj-photo { left: 0; top: 8%; width: 55%; height: 84%; }
 .layout-5 .pj-info  { right: 0; top: 0; }
 
-/* ── Layout 6: image bottom-right 60×68%, title top-right ────────────── */
+/* ── Layout 6: image bottom-dominant, left-anchored 82×75%, title top-left */
 /* preset-6                                                                */
 .layout-6 {
-  background: linear-gradient(to bottom-right,
+  background: linear-gradient(to bottom,
     var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 22%, #141210) 100%);
+    color-mix(in srgb, var(--accent) 20%, #141210) 100%);
 }
-.layout-6 .pj-photo { left: 38%; top: 30%; width: 60%; height: 68%; }
-.layout-6 .pj-info  { right: 0; top: 0; }
+.layout-6 .pj-photo { left: 8%; bottom: 0; width: 82%; height: 75%; }
+.layout-6 .pj-info  { left: 0; top: 0; max-width: 55%; }
 
 /* ── Layout 7: image right full-height 65%, title bottom-left ────────── */
 /* preset-7 — stakeholder-approved (Vila Serena reference)                */
