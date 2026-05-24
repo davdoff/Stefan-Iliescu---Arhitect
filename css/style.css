@@ -271,9 +271,11 @@ button { font: inherit; cursor: pointer; background: none; border: none; }
 
 /* ─── Project Sections ───────────────────────────────────────────────── */
 .project {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 100vh;
   overflow: hidden;
+  box-shadow: inset 0 10px 50px rgba(0, 0, 0, 0.45);
 }
 
 /* Shared image + info positioning base */
@@ -344,8 +346,8 @@ button { font: inherit; cursor: pointer; background: none; border: none; }
     var(--accent) 0%,
     color-mix(in srgb, var(--accent) 22%, #141210) 100%);
 }
-.layout-3 .pj-photo { left: 30%; top: 28%; width: 48%; height: 45%; }
-.layout-3 .pj-info  { right: 0; top: 0; }
+.layout-3 .pj-photo { right: 0; top: 18%; width: 62%; height: 62%; }
+.layout-3 .pj-info  { left: 0; top: 0; }
 
 /* ── Layout 4: image left full-height 58%, title bottom-right ────────── */
 /* preset-4                                                                */

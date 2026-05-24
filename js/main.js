@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="gallery-hidden">${galleryHTML}</div>
       `;
 
+      section.style.zIndex = n;
       container.appendChild(section);
     });
   }
@@ -73,6 +74,19 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.ticker.add(time => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 
+  /* ── Stacked card scale-down ──────────────────────────────────── */
+  document.querySelectorAll('.project').forEach(section => {
+    gsap.to(section, {
+      scale: 0.92,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -85,7 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         lenis.start();
       }
       const target = document.querySelector(link.getAttribute('href'));
-      if (target) lenis.scrollTo(target, { duration: 1.6, offset: 0 });
+      if (target) {
+        let y = 0, cur = target;
+        while (cur) { y += cur.offsetTop; cur = cur.offsetParent; }
+        lenis.scrollTo(y, { duration: 1.6 });
+      }
     });
   });
 
@@ -117,6 +135,46 @@ document.addEventListener('DOMContentLoaded', () => {
   lenis.on('scroll', ({ scroll }) => {
     if (scroll > 60) scrollIndicator?.classList.add('hidden');
     else scrollIndicator?.classList.remove('hidden');
+  });
+
+  /* ── Scroll snap ──────────────────────────────────────────────── */
+  const snapSections = [
+    document.getElementById('hero'),
+    ...document.querySelectorAll('.project'),
+    document.getElementById('contact'),
+  ];
+
+  let snapTimer = null;
+  let isSnapping = false;
+
+  function sectionTop(el) {
+    let y = 0, cur = el;
+    while (cur) { y += cur.offsetTop; cur = cur.offsetParent; }
+    return y;
+  }
+
+  function snapToNearest() {
+    const threshold = window.innerHeight * 0.22;
+    let nearest = null, minDist = Infinity;
+    snapSections.forEach(el => {
+      if (!el) return;
+      const dist = Math.abs(sectionTop(el) - lenis.scroll);
+      if (dist < minDist) { minDist = dist; nearest = el; }
+    });
+    if (nearest && minDist > 2 && minDist < threshold) {
+      isSnapping = true;
+      lenis.scrollTo(sectionTop(nearest), {
+        duration: 0.75,
+        easing: t => 1 - Math.pow(1 - t, 3),
+        onComplete: () => { isSnapping = false; },
+      });
+    }
+  }
+
+  lenis.on('scroll', ({ velocity }) => {
+    if (isSnapping) return;
+    clearTimeout(snapTimer);
+    if (Math.abs(velocity) < 0.3) snapTimer = setTimeout(snapToNearest, 60);
   });
 
   /* ── Reveal animations ────────────────────────────────────────── */
