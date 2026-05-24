@@ -14,26 +14,27 @@
 </head>
 <body>
 
-  <nav class="sidebar" id="sidebar" aria-label="Navigare proiecte">
-    <ul class="sidebar-nav" id="sidebar-nav"></ul>
-    <div class="sidebar-contact">
-      <a href="#contact" class="sidebar-link">Contact</a>
-    </div>
-  </nav>
-
-  <button class="hamburger" id="hamburger" aria-label="Deschide meniu" aria-expanded="false">
-    <span></span><span></span><span></span>
+  <!-- Nav trigger — fixed bottom-centre, opens the contents panel -->
+  <button class="nav-toggle" id="nav-toggle" aria-label="Navigare" aria-expanded="false">
+    <span></span>
+    <span></span>
   </button>
 
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <a href="#contact" class="mobile-contact-link">Contact</a>
-  </div>
+  <!-- Dim overlay behind the panel -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Slide-in contents panel -->
+  <nav class="nav-panel" id="nav-panel" aria-hidden="true">
+    <ul class="nav-list" id="nav-list"></ul>
+    <a href="#contact" class="nav-contact-link">Contact</a>
+  </nav>
 
   <main>
 
     <section id="hero">
       <div class="hero-portrait-wrap">
         <div class="hero-portrait" id="hero-portrait">
+          <img src="heroPortrait.jpeg" alt="Stefan Iliescu — Arhitect">
           <span class="hero-initials" aria-hidden="true">SI</span>
         </div>
       </div>
@@ -41,7 +42,7 @@
         <h1 class="hero-name">Stefan<br>Iliescu</h1>
         <div class="hero-rule"></div>
         <p class="hero-subtitle">Arhitect</p>
-        <p class="hero-bio">Spații care răspund.<br>Forme care durează.</p>
+        <p class="hero-bio">Spatii si Forme Fluide</p>
       </div>
       <div class="scroll-indicator" id="scroll-indicator" aria-hidden="true">
         <span class="scroll-indicator-text">Scroll</span>
@@ -56,8 +57,8 @@
       <div class="contact-rule reveal"></div>
       <h2 class="contact-heading reveal reveal-d1">Contact</h2>
       <address class="contact-details" style="font-style: normal;">
-        <a href="mailto:stefan.iliescu@arhitect.ro" class="contact-line reveal reveal-d1">stefan.iliescu@arhitect.ro</a>
-        <a href="tel:+40700000000" class="contact-line reveal reveal-d2">+40 700 000 000</a>
+        <a href="mailto:atelier.totoro@gmail.com" class="contact-line reveal reveal-d1">atelier.totoro@gmail.com</a>
+        <a href="tel:+40724288711" class="contact-line reveal reveal-d2">+40 724 288 711</a>
         <span class="contact-line reveal reveal-d3">București, România</span>
       </address>
       <footer class="contact-footer reveal">
@@ -77,4 +78,3 @@
 
 </body>
 </html>
- 

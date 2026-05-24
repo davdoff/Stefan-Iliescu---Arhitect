@@ -2,10 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Build all project sections from projects.js data ─────── */
   function renderProjects() {
-    const container     = document.getElementById('projects-container');
-    const sidebarNav    = document.getElementById('sidebar-nav');
-    const mobileMenu    = document.getElementById('mobile-menu');
-    const mobileContact = mobileMenu.querySelector('.mobile-contact-link');
+    const container = document.getElementById('projects-container');
+    const navList   = document.getElementById('nav-list');
 
     const layouts = ['layout-1', 'layout-2', 'layout-3', 'layout-4', 'layout-5', 'layout-6', 'layout-7', 'layout-8'];
 
@@ -15,18 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const num    = String(n).padStart(2, '0');
       const layout = project.layout || layouts[i % layouts.length];
 
-      // Sidebar link — show dash if project has no title (demo entries)
+      // Nav panel entry
       const navTitle = project.title || '—';
       const li = document.createElement('li');
-      li.innerHTML = `<a href="#${id}" class="sidebar-link" data-section="${id}">${num} — ${navTitle}</a>`;
-      sidebarNav.appendChild(li);
-
-      // Mobile menu link
-      const mobileLink = document.createElement('a');
-      mobileLink.href      = `#${id}`;
-      mobileLink.className = 'mobile-link';
-      mobileLink.textContent = project.title || `Proiect ${n}`;
-      mobileMenu.insertBefore(mobileLink, mobileContact);
+      li.innerHTML = `<a href="#${id}" class="nav-link" data-section="${id}">${num} — ${navTitle}</a>`;
+      navList.appendChild(li);
 
       // All photos for lightbox: details first, then gallery
       const allPhotos = [...project.details, ...project.gallery];
@@ -49,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       section.style.setProperty('--accent', project.accent);
 
       section.innerHTML = `
-        <figure class="pj-photo">
+        <figure class="pj-photo${project.portrait ? ' portrait' : ''}">
           <img src="${project.hero}" alt="${project.title || `Proiect ${n}`}">
         </figure>
         <div class="pj-info">${infoHTML}</div>
@@ -62,6 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderProjects();
+
+  /* Pre-compute section scroll positions at load (scroll=0, sticky not yet active) */
+  const sectionPositions = new Map();
+  document.querySelectorAll('#hero, .project, #contact').forEach(el => {
+    sectionPositions.set('#' + el.id, el.getBoundingClientRect().top + window.scrollY);
+  });
 
   /* ── Lenis smooth scroll ──────────────────────────────────────── */
   const lenis = new Lenis({
@@ -87,22 +84,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  const navToggle  = document.getElementById('nav-toggle');
+  const navOverlay = document.getElementById('nav-overlay');
+  const navPanel   = document.getElementById('nav-panel');
+
+  function closeNav() {
+    navPanel.classList.remove('open');
+    navOverlay.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navPanel.setAttribute('aria-hidden', 'true');
+    lenis.start();
+  }
+
+  navToggle.addEventListener('click', () => {
+    const open = navPanel.classList.toggle('open');
+    navOverlay.classList.toggle('open', open);
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+    navPanel.setAttribute('aria-hidden', !open);
+    open ? lenis.stop() : lenis.start();
+  });
+
+  navOverlay.addEventListener('click', closeNav);
+
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const isMobileLink = link.closest('.mobile-menu');
-      if (isMobileLink) {
-        mobileMenu.classList.remove('open');
-        hamburger?.classList.remove('open');
-        hamburger?.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        lenis.start();
-      }
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        let y = 0, cur = target;
-        while (cur) { y += cur.offsetTop; cur = cur.offsetParent; }
-        lenis.scrollTo(y, { duration: 1.6 });
+      if (link.closest('#nav-panel')) closeNav();
+      const href = link.getAttribute('href');
+      const y = sectionPositions.get(href);
+      if (y !== undefined) {
+        isSnapping = true;
+        lenis.scrollTo(y, {
+          duration: 1.6,
+          onComplete: () => { isSnapping = false; },
+        });
       }
     });
   });
@@ -147,23 +164,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let snapTimer = null;
   let isSnapping = false;
 
-  function sectionTop(el) {
-    let y = 0, cur = el;
-    while (cur) { y += cur.offsetTop; cur = cur.offsetParent; }
-    return y;
-  }
-
   function snapToNearest() {
     const threshold = window.innerHeight * 0.22;
     let nearest = null, minDist = Infinity;
     snapSections.forEach(el => {
       if (!el) return;
-      const dist = Math.abs(sectionTop(el) - lenis.scroll);
+      const top = sectionPositions.get('#' + el.id) ?? 0;
+      const dist = Math.abs(top - lenis.scroll);
       if (dist < minDist) { minDist = dist; nearest = el; }
     });
     if (nearest && minDist > 2 && minDist < threshold) {
       isSnapping = true;
-      lenis.scrollTo(sectionTop(nearest), {
+      lenis.scrollTo(sectionPositions.get('#' + nearest.id) ?? 0, {
         duration: 0.75,
         easing: t => 1 - Math.pow(1 - t, 3),
         onComplete: () => { isSnapping = false; },
@@ -189,16 +201,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  /* ── Active sidebar nav ───────────────────────────────────────── */
-  const sidebar      = document.getElementById('sidebar');
-  const sidebarLinks = document.querySelectorAll('.sidebar-link[data-section]');
+  /* ── Active nav link highlight ───────────────────────────────── */
+  const navLinks = document.querySelectorAll('.nav-link[data-section]');
 
   const projectObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const id     = entry.target.id;
       const accent = entry.target.dataset.accent || 'transparent';
-      sidebarLinks.forEach(link => {
+      navLinks.forEach(link => {
         const isActive = link.dataset.section === id;
         link.classList.toggle('active', isActive);
         link.style.borderLeftColor = isActive ? accent : 'transparent';
@@ -209,18 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.project[data-accent]').forEach(s =>
     projectObserver.observe(s)
   );
-
-  /* ── Mobile menu ──────────────────────────────────────────────── */
-  const hamburger  = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  hamburger?.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-    mobileMenu.setAttribute('aria-hidden', !open);
-    open ? lenis.stop() : lenis.start();
-  });
 
   /* ── GLightbox ────────────────────────────────────────────────── */
   const lightbox = GLightbox({

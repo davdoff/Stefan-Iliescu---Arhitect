@@ -29,6 +29,7 @@ Everything you need to update the site yourself. No build tools required — jus
   title:   'Project Name',
   accent:  '#1A9B96',          // pick a hex from PALETTE.md
   hero:    'images/project-N/hero.jpeg',
+  // portrait: true,           // ← add this if the hero photo is vertical
   details: [
     'images/project-N/detail-1.jpeg',
     'images/project-N/detail-2.jpeg',
@@ -71,7 +72,7 @@ Layout-7 is the stakeholder-approved preset (image fills the right side, title s
 | layout-3 | Centred, floating | Top-right | Colour wraps all sides |
 | layout-4 | Left, full height | Bottom-right | Colour band on right |
 | layout-5 | Left/centre, tall | Top-right | Colour bleeds right |
-| layout-6 | Bottom-right, large | Top-right | Colour fills top-left |
+| layout-6 | Tall, right-anchored | Top-left | Colour fills left + top |
 | layout-7 | Right, full height | Bottom-left | **Stakeholder approved** |
 | layout-8 | Right, offset centre | Top-left | Colour fills left + top |
 
@@ -86,6 +87,23 @@ accent: '#1A9B96',   // ← replace with any hex from PALETTE.md
 ```
 
 The colour is used as the gradient base for the entire section background. See `PALETTE.md` for tested options.
+
+### Gradient direction per layout — why it matters
+
+Each layout's gradient direction is chosen so the **colour shows in the exposed area** (the region not covered by the photo). If a project's colour looks invisible or near-black, the gradient start value is the likely culprit:
+
+| Layout | Gradient direction | Start mix | Exposed colour area |
+|---|---|---|---|
+| layout-1 | `135deg` | 100% → 25% | Bottom-right |
+| layout-2 | `to right` | 100% → 35% | Left band |
+| layout-3 | `160deg` | 100% → 22% | All sides |
+| layout-4 | `to right` | 30% → 100% | Right band |
+| layout-5 | `to right` | 25% → 100% | Right strip |
+| layout-6 | `to bottom` | 100% → 20% | Top-left |
+| layout-7 | `to bottom` | 100% → 18% | Left band |
+| layout-8 | `135deg` | 100% → 25% | Left + top |
+
+> **Note (bug fixed 2026-05):** layout-5 previously used `to bottom-right` with an 18% start, making the accent nearly invisible because the photo covers most of the gradient's colourful end. It was corrected to `to right` with a 25% start — colour now bleeds into the right strip as intended.
 
 ---
 
