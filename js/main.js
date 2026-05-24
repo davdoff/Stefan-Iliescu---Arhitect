@@ -2,60 +2,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Build all project sections from projects.js data ─────── */
   function renderProjects() {
-    const container   = document.getElementById('projects-container');
-    const sidebarNav  = document.getElementById('sidebar-nav');
-    const mobileMenu  = document.getElementById('mobile-menu');
+    const container     = document.getElementById('projects-container');
+    const sidebarNav    = document.getElementById('sidebar-nav');
+    const mobileMenu    = document.getElementById('mobile-menu');
     const mobileContact = mobileMenu.querySelector('.mobile-contact-link');
 
-    projects.forEach((project, i) => {
-      const n   = i + 1;
-      const id  = `project-${n}`;
-      const num = String(n).padStart(2, '0');
+    const layouts = ['layout-a', 'layout-b', 'layout-c', 'layout-d', 'layout-e', 'layout-f', 'layout-g', 'layout-h', 'layout-i', 'layout-j', 'layout-k', 'layout-l', 'layout-m', 'layout-n', 'layout-o', 'layout-p', 'layout-q', 'layout-r', 'layout-s'];
 
-      // Sidebar link
+    projects.forEach((project, i) => {
+      const n      = i + 1;
+      const id     = `project-${n}`;
+      const num    = String(n).padStart(2, '0');
+      const layout = layouts[i % layouts.length];
+
+      // Sidebar link — show dash if project has no title (demo entries)
+      const navTitle = project.title || '—';
       const li = document.createElement('li');
-      li.innerHTML = `<a href="#${id}" class="sidebar-link" data-section="${id}">${num} — ${project.title}</a>`;
+      li.innerHTML = `<a href="#${id}" class="sidebar-link" data-section="${id}">${num} — ${navTitle}</a>`;
       sidebarNav.appendChild(li);
 
       // Mobile menu link
       const mobileLink = document.createElement('a');
       mobileLink.href      = `#${id}`;
       mobileLink.className = 'mobile-link';
-      mobileLink.textContent = project.title;
+      mobileLink.textContent = project.title || `Proiect ${n}`;
       mobileMenu.insertBefore(mobileLink, mobileContact);
 
-      // Hidden gallery links (all extra photos)
-      const galleryHTML = project.gallery
+      // All photos for lightbox: details first, then gallery
+      const allPhotos = [...project.details, ...project.gallery];
+      const galleryHTML = allPhotos
         .map(src => `<a href="${src}" class="glightbox" data-gallery="${id}"></a>`)
         .join('');
 
-      // Full project section
+      // Info block — skip title/button if absent
+      const titleHTML = project.title
+        ? `<h2 class="project-title reveal">${project.title}</h2>` : '';
+      const btnHTML = allPhotos.length > 0
+        ? `<button class="view-more-btn reveal reveal-d1" data-gallery="${id}">Galerie completă →</button>` : '';
+
+      const infoHTML = `<span class="project-num">${num}</span>${titleHTML}${btnHTML}`;
+
+      // All layouts except those that handle accent via borders/bg use an accent rect element
+      const accentRect = !['layout-a', 'layout-c', 'layout-d', 'layout-l', 'layout-o', 'layout-q'].includes(layout)
+        ? '<div class="pj-accent-rect"></div>' : '';
+
       const section = document.createElement('section');
       section.id        = id;
-      section.className = 'project';
+      section.className = `project ${layout}`;
       section.dataset.accent = project.accent;
       section.style.setProperty('--accent', project.accent);
 
       section.innerHTML = `
-        <div class="project-hero-wrap">
-          <div class="project-hero-photo">
-            <img src="${project.hero}" alt="${project.title}">
-          </div>
+        ${accentRect}
+        <div class="pj-photo">
+          <img src="${project.hero}" alt="${project.title}">
         </div>
-        <div class="project-panel">
-          <h2 class="project-panel-title reveal">${project.title}</h2>
-          <div class="photo-grid">
-            <a href="${project.details[0]}" class="photo-item glightbox reveal" data-gallery="${id}">
-              <img src="${project.details[0]}" alt="${project.title}">
-            </a>
-            <a href="${project.details[1]}" class="photo-item glightbox reveal reveal-d1" data-gallery="${id}">
-              <img src="${project.details[1]}" alt="${project.title}">
-            </a>
-          </div>
-          <button class="view-more-btn reveal reveal-d2" data-gallery="${id}">
-            Galerie completă →
-          </button>
-        </div>
+        <div class="pj-info">${infoHTML}</div>
         <div class="gallery-hidden">${galleryHTML}</div>
       `;
 

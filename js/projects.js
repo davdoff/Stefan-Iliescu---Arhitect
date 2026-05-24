@@ -218,6 +218,246 @@ const projects = [
     ],
   },
 
+  /* ── Demo E ─────────────────────────────────────────────────── */
+  {
+    title:   'Casa Brâncuși',
+    accent:  '#1A5C9B',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.04 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.04 (2).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.05 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.05 (2).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.05 (3).jpeg',
+    ],
+  },
+
+  /* ── Demo F ─────────────────────────────────────────────────── */
+  {
+    title:   'Vila Nordului',
+    accent:  '#7A3B1E',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.06 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.06 (2).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (2).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (3).jpeg',
+    ],
+  },
+
+  /* ── Demo G ─────────────────────────────────────────────────── */
+  {
+    title:   'Rezidența Enescu',
+    accent:  '#2D6A4F',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (2).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.09 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.09 (2).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.09 (3).jpeg',
+    ],
+  },
+
+  /* ── Demo H ─────────────────────────────────────────────────── */
+  {
+    title:   'Pavilion Lumina',
+    accent:  '#0D6EAB',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (2).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (3).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (4).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (5).jpeg',
+    ],
+  },
+
+  /* ── Demo I ─────────────────────────────────────────────────── */
+  {
+    title:   'Casa Iordan',
+    accent:  '#8B4513',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.12 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.12 (2).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.13 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.13 (2).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.13 (3).jpeg',
+    ],
+  },
+
+  /* ── Demo J ─────────────────────────────────────────────────── */
+  {
+    title:   'Turnul Alb',
+    accent:  '#4A235A',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.14 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.14 (2).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.14 (3).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.14 (4).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.14 (5).jpeg',
+    ],
+  },
+
+  /* ── Demo K ─────────────────────────────────────────────────── */
+  {
+    title:   'Vila Serenă',
+    accent:  '#B5541E',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.15 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.15 (2).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.16 (1).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.16 (2).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.16 (3).jpeg',
+    ],
+  },
+
+  /* ── Demo L ─────────────────────────────────────────────────── */
+  {
+    title:   'Casa Meridian',
+    accent:  '#2F6B3A',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.04 (3).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.04 (4).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.04 (5).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.04 (6).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.05 (4).jpeg',
+    ],
+  },
+
+  /* ── Demo M ─────────────────────────────────────────────────── */
+  {
+    title:   'Atelier Văcărescu',
+    accent:  '#1B3A6B',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.05 (5).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.05 (6).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.05 (7).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.06 (3).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.06 (4).jpeg',
+    ],
+  },
+
+  /* ── Demo N ─────────────────────────────────────────────────── */
+  {
+    title:   'Vila Cireșar',
+    accent:  '#6B1535',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.06 (5).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.06 (6).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.06 (7).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (4).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (5).jpeg',
+    ],
+  },
+
+  /* ── Demo O ─────────────────────────────────────────────────── */
+  {
+    title:   'Rezidența Albastră',
+    accent:  '#2E5B82',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (6).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (7).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (8).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (9).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.07 (10).jpeg',
+    ],
+  },
+
+  /* ── Demo P ─────────────────────────────────────────────────── */
+  {
+    title:   'Casa Podgoriei',
+    accent:  '#4A5E3A',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (3).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (4).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (5).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (6).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (7).jpeg',
+    ],
+  },
+
+  /* ── Demo Q ─────────────────────────────────────────────────── */
+  {
+    title:   'Casa Stejarului',
+    accent:  '#8B1A1A',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.08 (8).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.09 (4).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.09 (5).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.09 (6).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (6).jpeg',
+    ],
+  },
+
+  /* ── Demo R ─────────────────────────────────────────────────── */
+  {
+    title:   'Pavilion Auriu',
+    accent:  '#9B7A1A',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (7).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (8).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (9).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (10).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (11).jpeg',
+    ],
+  },
+
+  /* ── Demo S ─────────────────────────────────────────────────── */
+  {
+    title:   'Vila Azur',
+    accent:  '#2A6E6E',
+    hero:    'images/project-1/gallery/hero.jpeg',
+    details: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (12).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (13).jpeg',
+    ],
+    gallery: [
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.11 (14).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.12 (3).jpeg',
+      'images/project-1/gallery/WhatsApp Image 2026-05-06 at 21.42.13 (4).jpeg',
+    ],
+  },
+
   /* ── ADD NEW PROJECTS BELOW THIS LINE ──────────────────────────
   {
     title:   'Project Name',
