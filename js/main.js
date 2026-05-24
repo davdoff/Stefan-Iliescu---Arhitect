@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu    = document.getElementById('mobile-menu');
     const mobileContact = mobileMenu.querySelector('.mobile-contact-link');
 
-    const layouts = ['layout-a', 'layout-b', 'layout-c', 'layout-d', 'layout-e', 'layout-f', 'layout-g', 'layout-h', 'layout-i', 'layout-j', 'layout-k', 'layout-l', 'layout-m', 'layout-n', 'layout-o', 'layout-p', 'layout-q', 'layout-r', 'layout-s'];
+    const layouts = ['layout-1', 'layout-2', 'layout-3', 'layout-4', 'layout-5', 'layout-6', 'layout-7', 'layout-8'];
 
     projects.forEach((project, i) => {
       const n      = i + 1;
       const id     = `project-${n}`;
       const num    = String(n).padStart(2, '0');
-      const layout = layouts[i % layouts.length];
+      const layout = project.layout || layouts[i % layouts.length];
 
       // Sidebar link — show dash if project has no title (demo entries)
       const navTitle = project.title || '—';
@@ -42,10 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const infoHTML = `<span class="project-num">${num}</span>${titleHTML}${btnHTML}`;
 
-      // All layouts except those that handle accent via borders/bg use an accent rect element
-      const accentRect = !['layout-a', 'layout-c', 'layout-d', 'layout-l', 'layout-o', 'layout-q'].includes(layout)
-        ? '<div class="pj-accent-rect"></div>' : '';
-
       const section = document.createElement('section');
       section.id        = id;
       section.className = `project ${layout}`;
@@ -53,10 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
       section.style.setProperty('--accent', project.accent);
 
       section.innerHTML = `
-        ${accentRect}
-        <div class="pj-photo">
-          <img src="${project.hero}" alt="${project.title}">
-        </div>
+        <figure class="pj-photo">
+          <img src="${project.hero}" alt="${project.title || `Proiect ${n}`}">
+        </figure>
         <div class="pj-info">${infoHTML}</div>
         <div class="gallery-hidden">${galleryHTML}</div>
       `;

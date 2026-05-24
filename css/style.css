@@ -1,4 +1,4 @@
-/* ─── Variables ─────────────────────────────────────────────────────── */
+﻿/* ─── Variables ─────────────────────────────────────────────────────── */
 :root {
   --bg-dark:      #141210;
   --bg-light:     #F5F0EB;
@@ -272,7 +272,28 @@ button { font: inherit; cursor: pointer; background: none; border: none; }
 /* ─── Project Sections ───────────────────────────────────────────────── */
 .project {
   position: relative;
+  height: 100vh;
   overflow: hidden;
+}
+
+/* Shared image + info positioning base */
+.pj-photo {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+}
+
+.pj-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.pj-info {
+  position: absolute;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  max-width: 44%;
 }
 
 /* Shared text elements */
@@ -296,685 +317,87 @@ button { font: inherit; cursor: pointer; background: none; border: none; }
   margin-bottom: 2.5rem;
 }
 
-/* ── A: photo left 60% | accent wall right 40% ──────────────────────── */
-.layout-a {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  min-height: 100vh;
-}
-
-.layout-a .pj-photo {
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.layout-a .pj-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.layout-a .pj-info {
-  background: var(--accent);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5rem 4rem;
-}
-
-/* ── B: dark bg — accent rect left, photo floats over it ────────────── */
-.layout-b {
-  height: 100vh;
-  background: var(--bg-dark);
-}
-
-.layout-b .pj-accent-rect {
-  position: absolute;
-  left: 0;
-  top: 10%;
-  width: 50%;
-  height: 76%;
-  background: var(--accent);
-}
-
-.layout-b .pj-photo {
-  position: absolute;
-  left: 20%;
-  top: 5%;
-  width: 63%;
-  height: 88%;
-  overflow: hidden;
-}
-
-.layout-b .pj-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.layout-b .pj-info {
-  position: absolute;
-  right: 5rem;
-  bottom: 4.5rem;
-}
-
-/* ── C: full-bleed photo, accent bar pinned to bottom ───────────────── */
-.layout-c {
-  height: 100vh;
-}
-
-.layout-c .pj-photo {
-  position: absolute;
-  inset: 0;
-}
-
-.layout-c .pj-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.layout-c .pj-info {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--accent);
-  padding: 2.5rem 5rem 2.5rem calc(var(--sidebar-w) + 3rem);
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-}
-
-.layout-c .pj-info .project-num { margin-bottom: 0; }
-
-.layout-c .pj-info .project-title {
-  flex: 1;
-  margin-bottom: 0;
-  font-size: clamp(1.6rem, 2.5vw, 2.8rem);
-}
-
-/* ── D: photo left 78% | narrow accent strip right 22% ─────────────── */
-.layout-d {
-  display: grid;
-  grid-template-columns: 78% 22%;
-  min-height: 100vh;
-}
-
-.layout-d .pj-photo {
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.layout-d .pj-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.layout-d .pj-info {
-  background: var(--accent);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 3rem 2rem 4rem;
-}
-
-.layout-d .pj-info .project-title {
-  font-size: clamp(1.4rem, 2vw, 2.2rem);
-}
-
-/* ── E: white bg — thin accent strip left wall, photo floats right ──── */
-.layout-e {
-  min-height: 100vh;
-  background: var(--bg-light);
-  position: relative;
-}
-
-.layout-e .pj-accent-rect {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 13%;
-  background: var(--accent);
-}
-
-.layout-e .pj-photo {
-  position: absolute;
-  left: 21%;
-  top: 8%;
-  width: 61%;
-  height: 82%;
-  overflow: hidden;
-}
-
-.layout-e .pj-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-.layout-e .pj-info {
-  position: absolute;
-  right: 5rem;
-  bottom: 5rem;
-}
-
-.layout-e .project-title { color: var(--text-primary); }
-.layout-e .project-num   { color: var(--text-muted); }
-
-.layout-e .view-more-btn {
-  color: var(--text-primary);
-  border-color: rgba(26, 23, 20, 0.3);
-}
-
-.layout-e .view-more-btn:hover {
-  background: rgba(26, 23, 20, 0.07);
-  color: var(--text-primary);
-  border-color: rgba(26, 23, 20, 0.6);
-}
-
-/* ── F: white bg — accent block bleeds off right, photo overlaps from left */
-.layout-f {
-  min-height: 100vh;
-  background: var(--bg-light);
-  position: relative;
-}
-
-.layout-f .pj-accent-rect {
-  position: absolute;
-  right: 0;
-  top: 15%;
-  width: 48%;
-  height: 65%;
-  background: var(--accent);
-}
-
-.layout-f .pj-photo {
-  position: absolute;
-  left: 10%;
-  top: 8%;
-  width: 58%;
-  height: 84%;
-  overflow: hidden;
-}
-
-.layout-f .pj-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-.layout-f .pj-info {
-  position: absolute;
-  right: 5rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* ── G: photo full-left 55%, right col: gradient accent top + light info bottom ── */
-.layout-g {
-  display: grid;
-  grid-template-columns: 55% 45%;
-  grid-template-rows: 44vh 1fr;
-  min-height: 100vh;
-}
-
-.layout-g .pj-photo {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  overflow: hidden;
-}
-
-.layout-g .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-g .pj-accent-rect {
-  grid-column: 2;
-  grid-row: 1;
-  background: linear-gradient(160deg,
-    var(--accent),
-    color-mix(in srgb, var(--accent) 55%, #141210)
-  );
-}
-
-.layout-g .pj-info {
-  grid-column: 2;
-  grid-row: 2;
-  background: var(--bg-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3rem 3.5rem;
-}
-
-.layout-g .pj-info .project-title { color: var(--text-primary); }
-.layout-g .pj-info .project-num   { color: var(--text-muted); }
-.layout-g .view-more-btn           { color: var(--text-primary); border-color: rgba(26,23,20,.3); }
-.layout-g .view-more-btn:hover     { background: rgba(26,23,20,.07); color: var(--text-primary); border-color: rgba(26,23,20,.6); }
-
-/* ── H: dark bg — gradient bloom lower-left corner, large photo right ── */
-.layout-h {
-  height: 100vh;
-  background: var(--bg-dark);
-  position: relative;
-}
-
-.layout-h .pj-accent-rect {
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 55%; height: 62%;
-  background: linear-gradient(135deg, var(--accent) 0%, transparent 70%);
-}
-
-.layout-h .pj-photo {
-  position: absolute;
-  right: 5%; top: 5%;
-  width: 60%; height: 90%;
-  overflow: hidden;
-}
-
-.layout-h .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-h .pj-info {
-  position: absolute;
-  left: calc(var(--sidebar-w) + 2rem);
-  top: 5rem;
-}
-
-/* ── I: white bg — photo smaller, gradient accent offset shadow behind ── */
-.layout-i {
-  min-height: 100vh;
-  background: var(--bg-light);
-  position: relative;
-}
-
-.layout-i .pj-accent-rect {
-  position: absolute;
-  left: calc(15% + 24px);
-  top: calc(8% + 24px);
-  width: 50%; height: 76%;
-  background: linear-gradient(135deg,
-    var(--accent),
-    color-mix(in srgb, var(--accent) 60%, #141210)
-  );
-}
-
-.layout-i .pj-photo {
-  position: absolute;
-  left: 15%; top: 8%;
-  width: 50%; height: 76%;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.layout-i .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-i .pj-info {
-  position: absolute;
-  right: 5rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.layout-i .project-title { color: var(--text-primary); }
-.layout-i .project-num   { color: var(--text-muted); }
-.layout-i .view-more-btn { color: var(--text-primary); border-color: rgba(26,23,20,.3); }
-.layout-i .view-more-btn:hover { background: rgba(26,23,20,.07); color: var(--text-primary); border-color: rgba(26,23,20,.6); }
-
-/* ── J: three bands — gradient accent top, photo middle, dark info bar ── */
-.layout-j {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.layout-j .pj-accent-rect {
-  flex-shrink: 0;
-  height: 26vh;
+/* ── Layout 1: image top-left 65×68%, title bottom-right ─────────────── */
+/* preset-1 from presets-final.md                                         */
+.layout-1 {
   background: linear-gradient(135deg,
     var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 40%, #141210) 100%
-  );
+    color-mix(in srgb, var(--accent) 25%, #141210) 100%);
 }
+.layout-1 .pj-photo { left: 0; top: 0; width: 65%; height: 68%; }
+.layout-1 .pj-info  { right: 0; bottom: 0; }
 
-.layout-j .pj-photo {
-  flex: 1;
-  min-height: 45vh;
-  overflow: hidden;
-}
-
-.layout-j .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-j .pj-info {
-  flex-shrink: 0;
-  background: var(--bg-dark);
-  padding: 2.5rem 5rem 2.5rem calc(var(--sidebar-w) + 3rem);
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-}
-
-.layout-j .pj-info .project-num   { margin-bottom: 0; }
-.layout-j .pj-info .project-title { flex: 1; margin-bottom: 0; font-size: clamp(1.6rem, 2.5vw, 2.8rem); }
-
-/* ── K: gradient left column 28%, photo right 72% ───────────────────── */
-.layout-k {
-  display: grid;
-  grid-template-columns: 28% 72%;
-  min-height: 100vh;
-  position: relative;
-}
-
-.layout-k .pj-accent-rect {
-  grid-column: 1;
-  grid-row: 1;
-  background: linear-gradient(to bottom,
-    var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 18%, #141210) 100%
-  );
-}
-
-.layout-k .pj-photo {
-  grid-column: 2;
-  grid-row: 1;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.layout-k .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-k .pj-info {
-  position: absolute;
-  left: 0; bottom: 4rem;
-  width: 28%;
-  padding: 2rem 2.5rem;
-}
-
-/* ── L: photo top large (62vh), gradient accent info band below ──────── */
-.layout-l {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.layout-l .pj-accent-rect { display: none; }
-
-.layout-l .pj-photo {
-  order: 1;
-  flex: 0 0 62vh;
-  overflow: hidden;
-}
-
-.layout-l .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-l .pj-info {
-  order: 2;
-  flex: 1;
-  min-height: 26vh;
-  background: linear-gradient(110deg,
-    var(--accent),
-    color-mix(in srgb, var(--accent) 55%, #141210)
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3rem 5rem 3.5rem calc(var(--sidebar-w) + 3rem);
-}
-
-/* ── M: dark info bar top w/ accent left border, thin line, photo ───── */
-.layout-m {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.layout-m .pj-info {
-  order: -1;
-  flex-shrink: 0;
-  background: var(--bg-dark);
-  border-left: 7px solid var(--accent);
-  padding: 2.5rem 5rem 2.5rem calc(var(--sidebar-w) + 2.5rem);
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-
-.layout-m .pj-info .project-num   { margin-bottom: 0; }
-.layout-m .pj-info .project-title { flex: 1; margin-bottom: 0; font-size: clamp(1.6rem, 2.5vw, 2.8rem); }
-
-.layout-m .pj-accent-rect {
-  order: 0;
-  flex-shrink: 0;
-  height: 5px;
-  background: var(--accent);
-}
-
-.layout-m .pj-photo {
-  order: 1;
-  flex: 1;
-  min-height: 50vh;
-  overflow: hidden;
-}
-
-.layout-m .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-/* ── N: full-bleed photo, semi-transparent accent panel left 36% ──── */
-.layout-n {
-  height: 100vh;
-  position: relative;
-}
-
-.layout-n .pj-photo {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.layout-n .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-n .pj-accent-rect {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 36%;
-  background: var(--accent);
-  opacity: 0.88;
-  z-index: 1;
-}
-
-.layout-n .pj-info {
-  position: absolute;
-  left: 0; bottom: 5rem;
-  width: 36%;
-  padding: 2rem 3rem;
-  z-index: 2;
-}
-
-/* ── O: photo left with accent L-frame border, white info right ──────── */
-.layout-o {
-  display: grid;
-  grid-template-columns: 55% 45%;
-  min-height: 100vh;
-  background: var(--bg-light);
-}
-
-.layout-o .pj-accent-rect { display: none; }
-
-.layout-o .pj-photo {
-  min-height: 100vh;
-  overflow: hidden;
-  border-right: 18px solid var(--accent);
-  border-bottom: 18px solid var(--accent);
-}
-
-.layout-o .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-o .pj-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 3rem 3.5rem 5rem;
-}
-
-.layout-o .project-title { color: var(--text-primary); }
-.layout-o .project-num   { color: var(--text-muted); }
-.layout-o .view-more-btn { color: var(--text-primary); border-color: rgba(26,23,20,.3); }
-.layout-o .view-more-btn:hover { background: rgba(26,23,20,.07); color: var(--text-primary); border-color: rgba(26,23,20,.6); }
-
-/* ── P: white info (22%) | gradient accent bar (6%) | photo (72%) ────── */
-.layout-p {
-  display: grid;
-  grid-template-columns: 22% 6% 72%;
-  min-height: 100vh;
-  background: var(--bg-light);
-}
-
-.layout-p .pj-accent-rect {
-  grid-column: 2;
-  grid-row: 1;
-  background: linear-gradient(to bottom,
-    var(--accent),
-    color-mix(in srgb, var(--accent) 50%, #141210)
-  );
-}
-
-.layout-p .pj-photo {
-  grid-column: 3;
-  grid-row: 1;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.layout-p .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-p .pj-info {
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 3rem 2rem 5rem 2.5rem;
-}
-
-.layout-p .project-title { color: var(--text-primary); }
-.layout-p .project-num   { color: var(--text-muted); }
-.layout-p .view-more-btn { color: var(--text-primary); border-color: rgba(26,23,20,.3); }
-.layout-p .view-more-btn:hover { background: rgba(26,23,20,.07); color: var(--text-primary); border-color: rgba(26,23,20,.6); }
-
-/* ── Q: white bg — oversized title left 60%, photo right 40% full-height ── */
-.layout-q {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  min-height: 100vh;
-  background: var(--bg-light);
-}
-
-.layout-q .pj-accent-rect { display: none; }
-
-.layout-q .pj-photo {
-  grid-column: 2;
-  grid-row: 1;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.layout-q .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-q .pj-info {
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5rem 4rem 5rem calc(var(--sidebar-w) + 3rem);
-  border-bottom: 7px solid var(--accent);
-}
-
-.layout-q .project-title {
-  color: var(--text-primary);
-  font-size: clamp(3rem, 5.5vw, 6rem);
-  margin-bottom: 3rem;
-}
-
-.layout-q .project-num   { color: var(--text-muted); }
-.layout-q .view-more-btn { color: var(--text-primary); border-color: rgba(26,23,20,.3); }
-.layout-q .view-more-btn:hover { background: rgba(26,23,20,.07); color: var(--text-primary); border-color: rgba(26,23,20,.6); }
-
-/* ── R: white bg — thin gradient bar top, photo centered 42%, title below ── */
-.layout-r {
-  min-height: 100vh;
-  background: var(--bg-light);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 0;
-}
-
-.layout-r .pj-accent-rect {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 6px;
+/* ── Layout 2: image right full-height 48%, title top-left ───────────── */
+/* preset-2                                                                */
+.layout-2 {
   background: linear-gradient(to right,
-    var(--accent),
-    color-mix(in srgb, var(--accent) 35%, var(--bg-light))
-  );
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 35%, #141210) 100%);
 }
+.layout-2 .pj-photo { right: 0; top: 0; width: 48%; height: 100%; }
+.layout-2 .pj-info  { left: 0; top: 0; }
 
-.layout-r .pj-photo {
-  width: 42%;
-  height: 58vh;
-  overflow: hidden;
-  flex-shrink: 0;
+/* ── Layout 3: image centered 48×45%, title top-right ────────────────── */
+/* preset-3                                                                */
+.layout-3 {
+  background: linear-gradient(160deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 22%, #141210) 100%);
 }
+.layout-3 .pj-photo { left: 30%; top: 28%; width: 48%; height: 45%; }
+.layout-3 .pj-info  { right: 0; top: 0; }
 
-.layout-r .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-r .pj-info {
-  width: 42%;
-  padding: 2rem 0 0;
+/* ── Layout 4: image left full-height 58%, title bottom-right ────────── */
+/* preset-4                                                                */
+.layout-4 {
+  background: linear-gradient(to right,
+    color-mix(in srgb, var(--accent) 30%, #141210) 0%,
+    var(--accent) 100%);
 }
+.layout-4 .pj-photo { left: 0; top: 0; width: 58%; height: 100%; }
+.layout-4 .pj-info  { right: 0; bottom: 0; }
 
-.layout-r .project-title { color: var(--text-primary); font-size: clamp(1.6rem, 2.5vw, 2.8rem); }
-.layout-r .project-num   { color: var(--text-muted); }
-.layout-r .view-more-btn { color: var(--text-primary); border-color: rgba(26,23,20,.3); }
-.layout-r .view-more-btn:hover { background: rgba(26,23,20,.07); color: var(--text-primary); border-color: rgba(26,23,20,.6); }
-
-/* ── S: white bg — accent strip top, title top-left, photo bottom-right 42% ── */
-.layout-s {
-  min-height: 100vh;
-  background: var(--bg-light);
-  position: relative;
+/* ── Layout 5: image left/center 55×84%, title top-right ─────────────── */
+/* preset-5                                                                */
+.layout-5 {
+  background: linear-gradient(to bottom-right,
+    color-mix(in srgb, var(--accent) 18%, #141210) 0%,
+    var(--accent) 100%);
 }
+.layout-5 .pj-photo { left: 0; top: 8%; width: 55%; height: 84%; }
+.layout-5 .pj-info  { right: 0; top: 0; }
 
-.layout-s .pj-accent-rect {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 7px;
-  background: var(--accent);
+/* ── Layout 6: image bottom-right 60×68%, title top-right ────────────── */
+/* preset-6                                                                */
+.layout-6 {
+  background: linear-gradient(to bottom-right,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 22%, #141210) 100%);
 }
+.layout-6 .pj-photo { left: 38%; top: 30%; width: 60%; height: 68%; }
+.layout-6 .pj-info  { right: 0; top: 0; }
 
-.layout-s .pj-photo {
-  position: absolute;
-  right: 0; bottom: 0;
-  width: 42%; height: 60%;
-  overflow: hidden;
+/* ── Layout 7: image right full-height 65%, title bottom-left ────────── */
+/* preset-7 — stakeholder-approved (Vila Serena reference)                */
+.layout-7 {
+  background: linear-gradient(to bottom,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 18%, #141210) 100%);
 }
+.layout-7 .pj-photo { right: 0; top: 0; width: 65%; height: 100%; }
+.layout-7 .pj-info  { left: 0; bottom: 0; max-width: 34%; }
 
-.layout-s .pj-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.layout-s .pj-info {
-  position: absolute;
-  left: calc(var(--sidebar-w) + 3rem);
-  top: 5rem;
+/* ── Layout 8: image right/center 62×70%, title top-left ─────────────── */
+/* preset-8                                                                */
+.layout-8 {
+  background: linear-gradient(135deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 25%, #141210) 100%);
 }
+.layout-8 .pj-photo { left: 33%; top: 15%; width: 62%; height: 70%; }
+.layout-8 .pj-info  { left: 0; top: 0; max-width: 32%; }
 
-.layout-s .project-title {
-  color: var(--text-primary);
-  font-size: clamp(2.2rem, 4vw, 4.5rem);
-}
-
-.layout-s .project-num   { color: var(--text-muted); }
-.layout-s .view-more-btn { color: var(--text-primary); border-color: rgba(26,23,20,.3); }
-.layout-s .view-more-btn:hover { background: rgba(26,23,20,.07); color: var(--text-primary); border-color: rgba(26,23,20,.6); }
-
+/* ── (layouts B–S removed — replaced by layout-1 through layout-8 above) */
 /* Gallery button */
 .view-more-btn {
   display: inline-flex;
@@ -1085,328 +508,32 @@ a.contact-line:hover { color: var(--bg-light); }
   .hero-content { padding: 5rem 2.5rem 4rem; }
   .hero-bio { max-width: 100%; }
 
-  /* A & D: stack photo top, info below */
-  .layout-a,
-  .layout-d {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .layout-a .pj-photo,
-  .layout-d .pj-photo { min-height: 60vw; }
-
-  .layout-a .pj-info,
-  .layout-d .pj-info {
-    padding: 3.5rem 2.5rem 4.5rem;
-    justify-content: flex-start;
-  }
-
-  .layout-d .pj-info .project-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
-
-  /* B: reflow from absolute to normal document flow */
-  .layout-b { height: auto; }
-
-  .layout-b .pj-accent-rect {
-    position: relative;
-    top: auto; left: auto;
-    width: 100%; height: 55vw;
-  }
-
-  .layout-b .pj-photo {
-    position: relative;
-    top: auto; left: auto;
-    width: 88%;
-    height: 58vw;
-    margin: -22vw auto 0;
-  }
-
-  .layout-b .pj-info {
-    position: relative;
-    right: auto; bottom: auto;
-    padding: 3rem 2.5rem 4.5rem;
-  }
-
-  /* C: unpin bar, stack photo + bar */
-  .layout-c {
+  /* All layout presets collapse to the same stacked view */
+  .layout-1, .layout-2, .layout-3, .layout-4,
+  .layout-5, .layout-6, .layout-7, .layout-8 {
     height: auto;
     display: flex;
     flex-direction: column;
   }
 
-  .layout-c .pj-photo {
+  .layout-1 .pj-photo, .layout-2 .pj-photo, .layout-3 .pj-photo,
+  .layout-4 .pj-photo, .layout-5 .pj-photo, .layout-6 .pj-photo,
+  .layout-7 .pj-photo, .layout-8 .pj-photo {
     position: relative;
     inset: auto;
-    height: 62vw;
-    min-height: 50vh;
-  }
-
-  .layout-c .pj-info {
-    position: relative;
-    bottom: auto; left: auto; right: auto;
-    padding: 3rem 2.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-
-  .layout-c .pj-info .project-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
-
-  /* E: thin accent strip becomes top bar, photo and info stack below */
-  .layout-e { height: auto; }
-
-  .layout-e .pj-accent-rect {
-    position: relative;
-    top: auto; left: auto; bottom: auto;
-    width: 100%; height: 10px;
-  }
-
-  .layout-e .pj-photo {
-    position: relative;
-    top: auto; left: auto;
-    width: 100%; height: 62vw;
-  }
-
-  .layout-e .pj-info {
-    position: relative;
-    right: auto; bottom: auto;
-    padding: 3rem 2.5rem 4.5rem;
-  }
-
-  /* F: reflow accent rect + photo stack, info below */
-  .layout-f { height: auto; }
-
-  .layout-f .pj-accent-rect {
-    position: relative;
-    right: auto; top: auto;
-    width: 100%; height: 55vw;
-  }
-
-  .layout-f .pj-photo {
-    position: relative;
-    left: auto; top: auto;
-    width: 88%; height: 58vw;
-    margin: -22vw auto 0;
-  }
-
-  .layout-f .pj-info {
-    position: relative;
-    right: auto; top: auto;
-    transform: none;
-    padding: 3rem 2.5rem 4.5rem;
-    color: var(--text-primary);
-  }
-
-  .layout-f .pj-info .project-title { color: var(--text-primary); }
-  .layout-f .pj-info .project-num   { color: var(--text-muted); }
-
-  .layout-f .view-more-btn {
-    color: var(--text-primary);
-    border-color: rgba(26, 23, 20, 0.3);
-  }
-
-  /* G: photo first, accent mid, info last */
-  .layout-g {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .layout-g .pj-photo   { order: 1; height: 62vw; }
-  .layout-g .pj-accent-rect { order: 2; height: 28vw; }
-  .layout-g .pj-info    { order: 3; padding: 3rem 2.5rem 4.5rem; }
-
-  /* H: reflow from absolute */
-  .layout-h { height: auto; }
-
-  .layout-h .pj-accent-rect {
-    position: relative;
-    left: auto; bottom: auto;
-    width: 100%; height: 55vw;
-    background: var(--accent);
-  }
-
-  .layout-h .pj-photo {
-    position: relative;
-    right: auto; top: auto;
-    width: 88%; height: 58vw;
-    margin: -22vw auto 0;
-  }
-
-  .layout-h .pj-info {
-    position: relative;
-    left: auto; top: auto;
-    padding: 3rem 2.5rem 4.5rem;
-  }
-
-  /* I: reflow from absolute */
-  .layout-i { height: auto; }
-
-  .layout-i .pj-accent-rect {
-    position: relative;
-    left: auto; top: auto;
-    width: 100%; height: 55vw;
-  }
-
-  .layout-i .pj-photo {
-    position: relative;
-    left: auto; top: auto;
-    width: 88%; height: 58vw;
-    margin: -22vw auto 0;
-  }
-
-  .layout-i .pj-info {
-    position: relative;
-    right: auto; top: auto;
-    transform: none;
-    padding: 3rem 2.5rem 4.5rem;
-  }
-
-  /* J: keep flex-column, fix padding */
-  .layout-j .pj-info {
-    padding: 3rem 2.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-
-  .layout-j .pj-info .project-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
-
-  /* K: grid → flex-column */
-  .layout-k {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .layout-k .pj-accent-rect { height: 10px; }
-  .layout-k .pj-photo       { min-height: 62vw; }
-
-  .layout-k .pj-info {
-    position: relative;
-    left: auto; bottom: auto;
     width: 100%;
-    padding: 3rem 2.5rem 4.5rem;
+    height: auto;
+    aspect-ratio: 16 / 10;
   }
 
-  /* L: flex-column — just shrink the photo */
-  .layout-l .pj-photo { flex: 0 0 55vw; }
-
-  .layout-l .pj-info { padding: 3rem 2.5rem 4rem; }
-
-  /* M: flex-column — fix padding */
-  .layout-m .pj-info {
-    padding: 3rem 2.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-
-  .layout-m .pj-info .project-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
-
-  /* N: reflow from absolute */
-  .layout-n { height: auto; }
-
-  .layout-n .pj-photo {
+  .layout-1 .pj-info, .layout-2 .pj-info, .layout-3 .pj-info,
+  .layout-4 .pj-info, .layout-5 .pj-info, .layout-6 .pj-info,
+  .layout-7 .pj-info, .layout-8 .pj-info {
     position: relative;
     inset: auto;
-    height: 62vw;
-    z-index: auto;
+    max-width: 100%;
+    padding: 3.5rem 2.5rem 4.5rem;
   }
-
-  .layout-n .pj-accent-rect {
-    position: relative;
-    left: auto; top: auto; bottom: auto;
-    width: 100%; height: auto;
-    opacity: 1;
-    z-index: auto;
-  }
-
-  .layout-n .pj-info {
-    position: relative;
-    left: auto; bottom: auto;
-    width: 100%;
-    z-index: auto;
-    padding: 3rem 2.5rem 4.5rem;
-  }
-
-  /* O: grid → flex-column */
-  .layout-o {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .layout-o .pj-photo {
-    min-height: 62vw;
-    border-right: none;
-    border-bottom: 12px solid var(--accent);
-  }
-
-  .layout-o .pj-info {
-    padding: 3rem 2.5rem 4rem;
-    justify-content: flex-start;
-  }
-
-  /* P: grid → flex-column; accent bar becomes top strip */
-  .layout-p {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .layout-p .pj-accent-rect { height: 8px; }
-  .layout-p .pj-photo       { min-height: 62vw; }
-
-  .layout-p .pj-info {
-    padding: 3rem 2.5rem 4rem;
-    justify-content: flex-start;
-  }
-
-  /* Q: grid → flex-column, photo on top */
-  .layout-q {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .layout-q .pj-photo { order: 1; min-height: 55vw; }
-  .layout-q .pj-info  {
-    order: 2;
-    border-bottom: none;
-    border-top: 7px solid var(--accent);
-    padding: 3rem 2.5rem 4rem;
-    justify-content: flex-start;
-  }
-
-  .layout-q .project-title { font-size: clamp(2.5rem, 7vw, 3.5rem); margin-bottom: 2rem; }
-
-  /* R: shrink widths to full width */
-  .layout-r .pj-photo { width: 90%; height: 52vw; }
-  .layout-r .pj-info  { width: 90%; }
-
-  /* S: reflow from absolute */
-  .layout-s { height: auto; }
-
-  .layout-s .pj-accent-rect {
-    position: relative;
-    top: auto; left: auto; right: auto;
-    width: 100%;
-  }
-
-  .layout-s .pj-photo {
-    position: relative;
-    right: auto; bottom: auto;
-    width: 100%; height: 55vw;
-  }
-
-  .layout-s .pj-info {
-    position: relative;
-    left: auto; top: auto;
-    padding: 3rem 2.5rem 4rem;
-  }
-
-  .layout-s .project-title { font-size: clamp(2rem, 6vw, 3rem); }
 }
 
 @media (max-width: 640px) {
@@ -1414,9 +541,9 @@ a.contact-line:hover { color: var(--bg-light); }
   .hero-content { padding: 4rem 1.5rem 3rem; }
   #contact { padding: 5rem 1.5rem 4rem; }
 
-  .layout-a .pj-info,
-  .layout-b .pj-info,
-  .layout-d .pj-info { padding: 3rem 1.5rem 4rem; }
-
-  .layout-c .pj-info { padding: 2.5rem 1.5rem; }
+  .layout-1 .pj-info, .layout-2 .pj-info, .layout-3 .pj-info,
+  .layout-4 .pj-info, .layout-5 .pj-info, .layout-6 .pj-info,
+  .layout-7 .pj-info, .layout-8 .pj-info {
+    padding: 3rem 1.5rem 4rem;
+  }
 }
