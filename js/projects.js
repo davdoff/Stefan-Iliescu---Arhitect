@@ -151,14 +151,29 @@ const projects = [
     gallery: [],
   },
 
-  /* ── Project 12 — Casa M ───────────────────────────────────── */
+  /* ── Vila Mirabello ────────────────────────────────────────── */
   {
-    title:   'Casa M',
+    title:   'Vila Mirabello',
     accent:  '#0e2e69',
     layout:  'layout-7',
     hero:    'images/project-12/hero.jpg',
     details: [],
-    gallery: [],
+    gallery: [
+      'galeryImages/Mirabello/0000 carefull.jpg',
+      'galeryImages/Mirabello/00000careful again.jpg',
+      'galeryImages/Mirabello/010-min.jpg',
+      'galeryImages/Mirabello/011-min.jpg',
+      'galeryImages/Mirabello/012-min(1).jpg',
+      'galeryImages/Mirabello/013-min.jpg',
+      'galeryImages/Mirabello/021-min.jpg',
+      'galeryImages/Mirabello/032-min.jpg',
+      'galeryImages/Mirabello/036-min.jpg',
+      'galeryImages/Mirabello/038-min.jpg',
+      'galeryImages/Mirabello/105-min.jpg',
+      'galeryImages/Mirabello/114-min.jpg',
+      'galeryImages/Mirabello/125-min.jpg',
+      'galeryImages/Mirabello/132-min.jpg',
+    ],
   },
   /* ── Project 2 — Vila B ────────────────────────────────────── */
   {

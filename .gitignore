@@ -27,3 +27,7 @@ n/
 !images/**/hero.jpg
 !images/**/hero.png
 !heroPortrait.jpeg
+
+# Allow gallery images
+!galeryImages/**/*.jpg
+!galeryImages/**/*.jpeg
