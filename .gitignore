@@ -30,6 +30,9 @@ n/
 *.PNG
 *.AVIF
 
+# Allow favicon
+!favpng.png
+
 # Allow hero images
 !images/**/hero.jpeg
 !images/**/hero.jpg
