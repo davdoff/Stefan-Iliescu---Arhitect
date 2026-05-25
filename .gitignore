@@ -10,6 +10,11 @@
 # Claude Code
 .claude/
 
+# Image compression tools
+compress_images.py
+compress_config.json
+COMPRESS_PROMPT.md
+
 # Color reference files (design assets, not part of the site)
 colors/
 n/
