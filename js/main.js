@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isSnapping = false;
 
   function snapToNearest() {
+    if (isSnapping) return;
     const threshold = window.innerHeight * 0.22;
     let nearest = null, minDist = Infinity;
     snapSections.forEach(el => {

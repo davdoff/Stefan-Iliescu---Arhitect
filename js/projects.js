@@ -41,10 +41,7 @@ const projects = [
     title:   'Vila Kairos',
     accent:  '#5b7d9c',
     hero:    'images/project-1/gallery/hero.jpeg',
-    details: [
-      'images/project-1/gallery/detail-1.jpeg',
-      'images/project-1/gallery/detail-2.jpeg',
-    ],
+    details: [],
     gallery: [
       'galeryImages/Kairos/WhatsApp Image 2026-05-07 at 21.48.05.jpeg',
       'galeryImages/Kairos/WhatsApp Image 2026-05-24 at 15.18.56 (1).jpeg',
@@ -118,63 +115,18 @@ const projects = [
       'galeryImages/Kairos/WhatsApp Image 2026-05-24 at 15.19.09.jpeg',
     ],
   },
-
-  /* ── Project 2 — Vila B ────────────────────────────────────── */
-  {
-    title:   'VIla B',
-    accent:  '#0f1a1b',
-    portrait: true,
-    hero:    'images/project-2/hero.jpeg',
-    details: [],
-    gallery: [
-      'galeryImages/vila B/WhatsApp Image 2026-05-07 at 21.56.49.jpeg',
-      'galeryImages/vila B/WhatsApp Image 2026-05-07 at 21.56.50.jpeg',
-    ],
-  },
-
-  /* ── Project 3 — Pensiunea H ───────────────────────────────── */
-  {
-    title:   'Pensiunea H',
-    accent:  '#5e2609',
-    hero:    'images/project-3/hero.jpeg',
-    details: [
-      'images/project-3/detail-1.jpeg',
-      'images/project-3/detail-2.jpeg',
-    ],
-    gallery: [
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.22 (1).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.22 (2).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.22.jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50 (1).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50 (2).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50 (3).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50.jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.51 (1).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.51.jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (1).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (2).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (3).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (4).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54.jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.55 (1).jpeg',
-      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.55.jpeg',
-    ],
-  },
-
-  /* ── Project 4 — Vila Kikinou ──────────────────────────────── */
+  /* ── Project 1 — Vila Kairos ───────────────────────────────── */
   {
     title:   'Vila Kikinou',
     accent:  '#bd486b',
     hero:    'images/project-4/hero.jpeg',
-    details: [
-      'images/project-4/detail-1.jpeg',
-      'images/project-4/detail-2.jpeg',
-    ],
+    details: [],
     gallery: [
-      'galeryImages/Kikinou/blabla.jpeg',
+      
       'galeryImages/Kikinou/WhatsApp Image 2026-05-07 at 21.44.36 (1).jpeg',
       'galeryImages/Kikinou/WhatsApp Image 2026-05-07 at 21.44.36 (10).jpeg',
       'galeryImages/Kikinou/WhatsApp Image 2026-05-07 at 21.44.36 (3).jpeg',
+      'galeryImages/Kikinou/blabla.jpeg',
       'galeryImages/Kikinou/WhatsApp Image 2026-05-07 at 21.44.36 (4).jpeg',
       'galeryImages/Kikinou/WhatsApp Image 2026-05-07 at 21.44.36 (5).jpeg',
       'galeryImages/Kikinou/WhatsApp Image 2026-05-07 at 21.44.36 (6).jpeg',
@@ -189,11 +141,106 @@ const projects = [
       'galeryImages/Kikinou/WhatsApp Image 2026-05-07 at 21.44.37.jpeg',
     ],
   },
+  /* ── Project 1 — Vila Kairos ───────────────────────────────── */
+  {
+    title:   'Casa T',
+    accent:  '#5c2951',
+        layout:  'layout-4',
+    hero:    'images/project-11/hero.jpg',
+    details: [ ],
+    gallery: [],
+  },
+
+  /* ── Project 12 — Casa M ───────────────────────────────────── */
+  {
+    title:   'Casa M',
+    accent:  '#0e2e69',
+    layout:  'layout-7',
+    hero:    'images/project-12/hero.jpg',
+    details: [],
+    gallery: [],
+  },
+  /* ── Project 2 — Vila B ────────────────────────────────────── */
+  {
+    title:   'VIla B',
+    accent:  '#0f1a1b',
+    portrait: true,
+    hero:    'images/project-2/hero.jpeg',
+    details: [],
+    gallery: [
+      'galeryImages/vila B/WhatsApp Image 2026-05-07 at 21.56.49.jpeg',
+      'galeryImages/vila B/WhatsApp Image 2026-05-07 at 21.56.50.jpeg',
+    ],
+  },
+    {
+    title:   'Vila LMMMI',
+    accent:  '#b31c1c',
+    layout:  'layout-7',
+    hero:    'images/project-10/hero.jpeg',
+    details: [],
+    gallery: [
+      'galeryImages/vila LMMMI/1.jpeg',
+      'galeryImages/vila LMMMI/2.jpeg',
+      'galeryImages/vila LMMMI/3.jpeg',
+      'galeryImages/vila LMMMI/4.jpeg',
+      'galeryImages/vila LMMMI/hero.jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.56.30.jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (1).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (2).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (3).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (4).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (1).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (2).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (3).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (4).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51.jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (1).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (2).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (3).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (4).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (5).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (6).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (7).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (8).jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54.jpeg',
+      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.11.24.jpeg',
+    ],
+  },
+
+  /* ── Project 3 — Pensiunea H ───────────────────────────────── */
+  {
+    title:   'Pensiunea H',
+    accent:  '#5e2609',
+    hero:    'images/project-3/hero.jpeg',
+    details: [],
+    gallery: [
+
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.22 (2).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.22.jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50 (1).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50 (2).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50 (3).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.50.jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.51 (1).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.22 (1).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.55.51.jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (1).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (2).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (3).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54 (4).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.54.jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.55 (1).jpeg',
+      'galeryImages/pensiunea H/WhatsApp Image 2026-05-07 at 21.57.55.jpeg',
+    ],
+  },
+
+
 
   /* ── Project 5 — Tree House Cosoba ────────────────────────── */
   {
     title:   'Tree House Cosoba',
     accent:  '#449121',
+        layout:  'layout-4',
     hero:    'images/project-5/hero.jpeg',
     details: [],
     gallery: [
@@ -241,7 +288,7 @@ const projects = [
   {
     title:   'Vila L',
     accent:  '#1d2c0c',
-    layout:  'layout-7',
+    layout:  'layout-5',
     hero:    'images/project-7/hero.jpeg',
     details: [],
     gallery: [
@@ -288,6 +335,7 @@ const projects = [
   {
     title:   'Pensiunea Sf Gheorhe',
     accent:  '#92652a',
+        layout:  'layout-4',
     hero:    'images/project-9/hero.jpeg',
     details: [],
     gallery: [
@@ -304,65 +352,9 @@ const projects = [
   },
 
   /* ── Project 10 — Vila LMMMI ───────────────────────────────── */
-  {
-    title:   'Vila LMMMI',
-    accent:  '#b31c1c',
-    layout:  'layout-7',
-    hero:    'images/project-10/hero.jpeg',
-    details: [],
-    gallery: [
-      'galeryImages/vila LMMMI/1.jpeg',
-      'galeryImages/vila LMMMI/2.jpeg',
-      'galeryImages/vila LMMMI/3.jpeg',
-      'galeryImages/vila LMMMI/4.jpeg',
-      'galeryImages/vila LMMMI/hero.jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.56.30.jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (1).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (2).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (3).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.58.15 (4).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (1).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (2).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (3).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51 (4).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 21.59.51.jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (1).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (2).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (3).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (4).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (5).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (6).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (7).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54 (8).jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.01.54.jpeg',
-      'galeryImages/vila LMMMI/WhatsApp Image 2026-05-06 at 22.11.24.jpeg',
-    ],
-  },
 
-  /* ── Project 11 — Casa T ───────────────────────────────────── */
-  {
-    title:   'Casa T',
-    accent:  '#5c2951',
-    hero:    'images/project-11/hero.jpg',
-    details: [
-      'images/project-11/hero1.JPG',
-      'images/project-11/hero2.jpg',
-    ],
-    gallery: [],
-  },
 
-  /* ── Project 12 — Casa M ───────────────────────────────────── */
-  {
-    title:   'Casa M',
-    accent:  '#0e2e69',
-    layout:  'layout-7',
-    hero:    'images/project-12/hero2.jpeg',
-    details: [
-      'images/project-12/hero.jpeg',
-      'images/project-12/hero3.jpeg',
-    ],
-    gallery: [],
-  },
+
 
   /* ── ADD NEW PROJECTS BELOW THIS LINE ──────────────────────────
   {

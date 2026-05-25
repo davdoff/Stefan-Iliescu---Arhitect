@@ -12,7 +12,7 @@
 
 # Color reference files (design assets, not part of the site)
 colors/
-
+n/
 # Exclude all image files except hero photos
 *.jpeg
 *.jpg
