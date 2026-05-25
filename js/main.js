@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const layouts = ['layout-1', 'layout-2', 'layout-3', 'layout-4', 'layout-5', 'layout-6', 'layout-7', 'layout-8'];
 
+    // Home entry always first
+    const homeLi = document.createElement('li');
+    homeLi.innerHTML = `<a href="#hero" class="nav-link" data-section="hero">00 — Home</a>`;
+    navList.appendChild(homeLi);
+
     projects.forEach((project, i) => {
       const n      = i + 1;
       const id     = `project-${n}`;
@@ -28,10 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Info block — skip title/button if absent
       const titleHTML = project.title
         ? `<h2 class="project-title reveal">${project.title}</h2>` : '';
+      const subtitleHTML = project.subtitle
+        ? project.subtitleUrl
+          ? `<a href="${project.subtitleUrl}" class="project-subtitle reveal reveal-d1" target="_blank" rel="noopener">${project.subtitle}</a>`
+          : `<span class="project-subtitle reveal reveal-d1">${project.subtitle}</span>`
+        : '';
       const btnHTML = allPhotos.length > 0
         ? `<button class="view-more-btn reveal reveal-d1" data-gallery="${id}">Galerie completă →</button>` : '';
 
-      const infoHTML = `<span class="project-num">${num}</span>${titleHTML}${btnHTML}`;
+      const infoHTML = `<span class="project-num">${num}</span>${titleHTML}${subtitleHTML}${btnHTML}`;
 
       const section = document.createElement('section');
       section.id        = id;
@@ -41,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       section.innerHTML = `
         <figure class="pj-photo${project.portrait ? ' portrait' : ''}">
-          <img src="${project.hero}" alt="${project.title || `Proiect ${n}`}">
+          <img src="${project.hero}" alt="${project.title || `Proiect ${n}`}"${i > 0 ? ' loading="lazy"' : ''}>
         </figure>
         <div class="pj-info">${infoHTML}</div>
         <div class="gallery-hidden">${galleryHTML}</div>
@@ -54,10 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderProjects();
 
-  /* Pre-compute section scroll positions at load (scroll=0, sticky not yet active) */
+  /* Natural document offset — unaffected by scroll state or sticky clamping */
+  function docTop(el) {
+    let top = 0;
+    while (el) { top += el.offsetTop; el = el.offsetParent; }
+    return top;
+  }
+
   const sectionPositions = new Map();
   document.querySelectorAll('#hero, .project, #contact').forEach(el => {
-    sectionPositions.set('#' + el.id, el.getBoundingClientRect().top + window.scrollY);
+    sectionPositions.set('#' + el.id, docTop(el));
   });
 
   /* ── Lenis smooth scroll ──────────────────────────────────────── */
@@ -233,9 +249,32 @@ document.addEventListener('DOMContentLoaded', () => {
     slideEffect: 'fade',
   });
 
+  /* ── Progressive gallery cache warming ───────────────────────── */
+  const preloadCount = projects.map(() => 0);
+
+  function preloadProjectImages(idx, upTo) {
+    const all = [...projects[idx].details, ...projects[idx].gallery];
+    const end = Math.min(upTo, all.length);
+    for (let j = preloadCount[idx]; j < end; j++) new Image().src = all[j];
+    preloadCount[idx] = Math.max(preloadCount[idx], end);
+  }
+
+  window.addEventListener('load', () => {
+    projects.forEach((_, i) => preloadProjectImages(i, 2));
+  });
+
+  (window.requestIdleCallback || (cb => setTimeout(cb, 2000)))(() => {
+    projects.forEach((_, i) => preloadProjectImages(i, 5));
+  });
+
   document.querySelectorAll('.view-more-btn[data-gallery]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const firstItem = document.querySelector(`.glightbox[data-gallery="${btn.dataset.gallery}"]`);
+      const gId = btn.dataset.gallery;
+      const idx = parseInt(gId.replace('project-', '')) - 1;
+      const all = [...projects[idx].details, ...projects[idx].gallery];
+      for (let j = preloadCount[idx]; j < all.length; j++) new Image().src = all[j];
+      preloadCount[idx] = all.length;
+      const firstItem = document.querySelector(`.glightbox[data-gallery="${gId}"]`);
       if (firstItem) firstItem.click();
     });
   });

@@ -45,7 +45,8 @@ button { font: inherit; cursor: pointer; background: none; border: none; }
 
 .nav-toggle span {
   display: block;
-  width: 100%;
+  width: calc(100% - 4px);
+  margin-left: 2px;
   height: 1px;
   background: rgba(245, 240, 235, 0.4);
   transition: transform 0.35s ease, opacity 0.35s ease, background 0.25s ease;
@@ -305,7 +306,27 @@ button { font: inherit; cursor: pointer; background: none; border: none; }
   color: var(--bg-light);
   letter-spacing: 0.04em;
   line-height: 1.1;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.project-subtitle {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.82rem);
+  font-weight: 400;
+  color: rgba(245, 240, 235, 0.5);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  text-decoration: none;
+}
+
+a.project-subtitle {
+  transition: color 0.2s ease;
+}
+
+a.project-subtitle:hover {
+  color: rgba(245, 240, 235, 0.85);
 }
 
 /* ── Layout 1: image top-left 65×68%, title bottom-right ─────────────── */
